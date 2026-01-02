@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website đã bị chặn - Cai Lọ Detox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0A0A0F;
+            --secondary-bg: #14141F;
+            --accent: #FF6B6B;
+            --text-primary: #F0F0F0;
+            --text-secondary: #A0A0B0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .block-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .block-card {
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        
+        .detox-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(255, 71, 87, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+        
+        .detox-icon i {
+            font-size: 48px;
+            color: var(--accent);
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .domain-name {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .reason {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            padding: 12px 24px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .detox-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .info-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .detox-progress {
+            margin-bottom: 32px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF4757, #FF6B6B);
+            border-radius: 4px;
+            width: 50%;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 160px;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF4757, #FF6B6B);
+            border: none;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .footer {
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            margin-top: 24px;
+        }
+        
+        .footer i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 640px) {
+            .block-card {
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="block-container">
+        <div class="block-card">
+            <div class="detox-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            
+            <h1 id="pageTitle">WEBSITE ĐÃ BỊ CHẶN</h1>
+            
+            <div class="domain-name" id="domainDisplay">Đang tải...</div>
+            
+            <div class="reason" id="reasonDisplay">Chế độ cai nghiện</div>
+            
+            <div class="detox-info" id="detoxInfo">
+                <div class="info-item">
+                    <span class="info-label">Chế độ:</span>
+                    <span class="info-value" id="modeDisplay">Cai nghiện</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Thời gian hôm nay:</span>
+                    <span class="info-value" id="timeLimit">60 phút</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Đã sử dụng:</span>
+                    <span class="info-value" id="timeUsed">0 phút</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Reset sau:</span>
+                    <span class="info-value" id="resetTime">0 giờ</span>
+                </div>
+            </div>
+            
+            <div class="detox-progress">
+                <div class="progress-text">
+                    <span>Tiến trình cai nghiện</span>
+                    <span id="progressPercent">50%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="goBackBtn" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Quay lại
+                </button>
+                <button id="manageBtn" class="btn btn-primary">
+                    <i class="fas fa-cog"></i>
+                    Quản lý cai nghiện
+                </button>
+            </div>
+            
+            <div class="footer">
+                <p><i class="fas fa-heartbeat"></i> Cai Lọ Detox - Giúp bạn kiểm soát thời gian hiệu quả</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const domain = urlParams.get('domain') || 'Unknown';
+            const originalUrl = urlParams.get('url') || '';
+            const reason = urlParams.get('reason') || 'blocked';
+            
+            // Display basic info
+            document.getElementById('domainDisplay').textContent = domain;
+            document.getElementById('reasonDisplay').textContent = 
+                reason === 'timeout' ? '⏰ Đã hết thời gian cai nghiện' : '🚫 Website bị chặn';
+            
+            if (reason === 'timeout') {
+                document.getElementById('pageTitle').textContent = '⏰ HẾT THỜI GIAN CAI NGHIỆN';
+            }
+            
+            // Get detox info from storage
+            try {
+                const data = await chrome.storage.local.get(['detoxData', 'blockedDomains']);
+                
+                if (data.detoxData && data.detoxData[domain]) {
+                    const detox = data.detoxData[domain];
+                    
+                    // Update detox info
+                    document.getElementById('timeLimit').textContent = `${detox.dailyLimit || 60} phút`;
+                    document.getElementById('timeUsed').textContent = `${detox.usedTimeToday?.toFixed(1) || 0} phút`;
+                    
+                    // Calculate reset time
+                    const now = new Date();
+                    const tomorrow = new Date(now);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    tomorrow.setHours(0, 0, 0, 0);
+                    const hoursUntilReset = Math.ceil((tomorrow - now) / (1000 * 60 * 60));
+                    document.getElementById('resetTime').textContent = `${hoursUntilReset} giờ`;
+                    
+                    // Calculate progress
+                    const daysInDetox = Math.floor((Date.now() - detox.startDate) / (1000 * 60 * 60 * 24)) + 1;
+                    const targetDays = (60 - 5) / 10; // From 60min to 5min, decreasing 10min/day
+                    const progress = Math.min(100, Math.round((daysInDetox / targetDays) * 100));
+                    
+                    document.getElementById('progressPercent').textContent = `${progress}%`;
+                    document.getElementById('progressFill').style.width = `${progress}%`;
+                    
+                    // Update mode display
+                    const isDetox = data.blockedDomains?.find(d => d.name === domain)?.detoxMode;
+                    document.getElementById('modeDisplay').textContent = isDetox ? 'Cai nghiện' : 'Chặn thường';
+                }
+            } catch (error) {
+                console.error('Error loading detox info:', error);
+            }
+            
+            // Setup button event listeners
+            document.getElementById('goBackBtn').addEventListener('click', function() {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    chrome.tabs.create({ url: 'chrome://newtab' });
+                }
+            });
+            
+            document.getElementById('manageBtn').addEventListener('click', function() {
+                chrome.runtime.sendMessage({ type: 'OPEN_POPUP' });
+            });
+            
+            // Report this block
+            try {
+                await chrome.runtime.sendMessage({
+                    type: 'REPORT_BLOCKED',
+                    domain: domain,
+                    url: originalUrl,
+                    reason: reason
+                });
+            } catch (error) {
+                console.error('Error reporting block:', error);
+            }
+        });
+    </script>
+</body>
+</html>

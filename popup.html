@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cai Lọ • Cai nghiện website</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="status-dot"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Cai Lọ <span class="pro-badge">DETOX</span></h1>
+                        <p class="subtitle">Cai nghiện website thông minh</p>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div class="status">
+                        <span class="status-text">Cai nghiện</span>
+                        <label class="switch">
+                            <input type="checkbox" id="globalToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalBlocked">0</div>
+                        <div class="stat-label">Đã chặn</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="todayBlocked">0</div>
+                        <div class="stat-label">Hôm nay</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="detoxActive">0</div>
+                        <div class="stat-label">Đang cai nghiện</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Detox Progress -->
+            <div class="detox-progress" id="detoxProgress">
+                <div class="progress-header">
+                    <h4><i class="fas fa-hourglass-half"></i> Tiến trình cai nghiện</h4>
+                    <span class="progress-info" id="detoxInfo">0/0 domains</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="detoxProgressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-plus-medical"></i> Thêm website cai nghiện</h3>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-globe input-icon"></i>
+                        <input 
+                            type="text" 
+                            id="domainInput" 
+                            placeholder="example.com" 
+                            class="domain-input"
+                        >
+                        <button id="addButton" class="add-button">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Cai nghiện</span>
+                        </button>
+                    </div>
+                    <p class="input-hint">
+                        <i class="fas fa-info-circle"></i>
+                        Website sẽ được giảm dần thời gian truy cập mỗi ngày
+                    </p>
+                </div>
+                
+                <!-- Detox Mode Options -->
+                <div class="detox-options">
+                    <div class="option-card active" data-mode="normal">
+                        <div class="option-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <div class="option-content">
+                            <h5>Chặn hoàn toàn</h5>
+                            <p>Không cho truy cập</p>
+                        </div>
+                    </div>
+                    <div class="option-card" data-mode="detox" id="detoxOption">
+                        <div class="option-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="option-content">
+                            <h5>Cai nghiện</h5>
+                            <p>Giảm dần thời gian</p>
+                        </div>
+                        <div class="option-badge">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-section">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">
+                        Tất cả <span class="tab-badge" id="allCount">0</span>
+                    </button>
+                    <button class="filter-tab" data-filter="detox">
+                        Đang cai <span class="tab-badge" id="detoxCount">0</span>
+                    </button>
+                    <button class="filter-tab" data-filter="social">
+                        MXH <span class="tab-badge" id="socialCount">0</span>
+                    </button>
+                    <button class="filter-tab" data-filter="game">
+                        Game <span class="tab-badge" id="gameCount">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Domain List -->
+            <div class="list-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-list"></i> Danh sách website</h3>
+                    <div class="list-actions">
+                        <button id="exportButton" class="action-button" title="Xuất danh sách">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button id="importButton" class="action-button" title="Nhập danh sách">
+                            <i class="fas fa-upload"></i>
+                        </button>
+                        <button id="clearAllButton" class="action-button danger" title="Xóa tất cả">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="list-container" id="listContainer">
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">
+                            <i class="fas fa-lock-open"></i>
+                        </div>
+                        <h4>Chưa có website nào</h4>
+                        <p>Bắt đầu cai nghiện website đầu tiên</p>
+                    </div>
+                    <ul class="domain-list" id="domainList">
+                        <!-- Domain items will be inserted here -->
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Detox Tips -->
+            <div class="tips-section">
+                <div class="tip-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Mẹo cai nghiện hiệu quả</span>
+                </div>
+                <div class="tip-content">
+                    <p>• Ngày 1: 60 phút • Giảm 10 phút/ngày • Tối thiểu: 5 phút</p>
+                    <p class="tip-small">Thời gian reset vào 0h hàng ngày</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-info">
+                <div class="protection-status">
+                    <div class="protection-dot"></div>
+                    <span>Đang cai nghiện: <strong id="activeDetoxCount">0</strong></span>
+                </div>
+                <div class="last-update">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Cập nhật: <span id="lastUpdate">Vừa xong</span></span>
+                </div>
+            </div>
+            <div class="footer-actions">
+                <button id="settingsButton" class="footer-button" title="Cài đặt">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button id="statsButton" class="footer-button" title="Thống kê">
+                    <i class="fas fa-chart-bar"></i>
+                </button>
+                <button id="helpButton" class="footer-button" title="Trợ giúp">
+                    <i class="fas fa-question-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
